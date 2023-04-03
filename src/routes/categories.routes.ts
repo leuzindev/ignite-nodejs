@@ -14,9 +14,9 @@ categoriesRoutes
     })
 
     .get("/categories", (request, response) => {
+        console.log(`osss`)
         return listCategoriesController.handle(request, response);
     })
-
     .post("/categories/import", upload.single("file") ,(request, response) => {
         return importCategoryController.handle(request, response);
     })
