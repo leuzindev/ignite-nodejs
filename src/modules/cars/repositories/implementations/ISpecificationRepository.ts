@@ -1,4 +1,4 @@
-import { ISpecification } from "../model/Specification";
+import { ISpecification } from "../../model/Specification";
 
 
 interface ICreateSpecificationDTO {

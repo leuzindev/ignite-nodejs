@@ -1,5 +1,5 @@
 import { ISpecification } from "../model/Specification";
-import { ISpecificationRepository, ICreateSpecificationDTO } from "./ISpecificationRepository";
+import { ISpecificationRepository, ICreateSpecificationDTO } from "./implementations/ISpecificationRepository";
 import { v4 as uuidV4 } from "uuid"
 
 class SpecificationRepository implements ISpecificationRepository{

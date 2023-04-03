@@ -1,6 +1,6 @@
 import { ICategory } from "../model/Category";
 import { v4 as uuidV4 } from "uuid"
-import { ICategoriesRepository, ICreateCategoryDTO } from "./ICategoriesRepository";
+import { ICategoriesRepository, ICreateCategoryDTO } from "./implementations/ICategoriesRepository";
 
 
 
@@ -8,8 +8,17 @@ class CategoryRepository implements ICategoriesRepository {
 
     private categories: ICategory[];
 
-    constructor() {
+    private static INSTANCE: CategoryRepository;
+
+    private constructor() {
         this.categories = [];
+    }
+
+    public static getInstance(): CategoryRepository{
+        if(!CategoryRepository.INSTANCE){
+            CategoryRepository.INSTANCE = new CategoryRepository();
+        }
+        return CategoryRepository.INSTANCE;
     }
 
     create({ name, description }: ICreateCategoryDTO): void {
@@ -28,7 +37,7 @@ class CategoryRepository implements ICategoriesRepository {
         return this.categories;
     }
 
-    findByName(name:string) : ICategory | undefined {
+    findByName(name: string): ICategory | undefined {
 
         const category = this.categories.find((category) => category.name === name)
         return category;
